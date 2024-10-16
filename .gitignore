@@ -1,3 +1,4 @@
 _layout/
+node_modules/
 *.local
 .env
