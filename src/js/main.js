@@ -1,0 +1,2 @@
+// bootstrap scripts
+import 'bootstrap';
