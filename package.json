@@ -12,15 +12,17 @@
     "autoprefixer": "^10.4.20",
     "browser-sync": "^3.0.3",
     "cssnano": "^7.0.6",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^10.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
-    "sass": "^1.79.5"
+    "gulp-webp": "^5.0.0",
+    "sass": "1.77.6"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "@popperjs/core": "^2.11.8"
+    "gulp-dart-sass": "^1.1.0"
   }
 }
