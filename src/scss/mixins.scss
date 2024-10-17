@@ -1,18 +1,30 @@
 @mixin square($size, $radius: 0) {
-  width: $size;
-  height: $size;
-
-  @if $radius != 0 {
-    border-radius: $radius;
-  }
+	width: $size;
+	height: $size;
+	
+	@if $radius != 0 {
+		@include radius($radius);
+	}
 }
 
 @mixin radius($radius: 0) {
-  @if $radius != 0 {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    -ms-border-radius: $radius;
-    -o-border-radius: $radius;
-    border-radius: $radius;
-  }
+	@if $radius != 0 {
+		-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		-ms-border-radius: $radius;
+		-o-border-radius: $radius;
+		border-radius: $radius;
+	}
+}
+
+@mixin shadow($rules: null) {
+	@if $rules {
+		-webkit-box-shadow: $rules;
+		-moz-box-shadow: $rules;
+		-ms-box-shadow: $rules;
+		-o-box-shadow: $rules;
+		box-shadow: $rules;
+	} @else {
+		box-shadow: 0 0 0.5rem 0 rgba($black, 0.2);
+	}
 }

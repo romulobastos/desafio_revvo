@@ -1,0 +1,59 @@
+// home slideshow
+.slideshow {
+	background: $black;
+
+	#slides {
+		max-width: 1440px;
+		margin: 0 auto;
+
+		&::after{
+			content: "";
+			position: absolute;
+			inset: 0;
+			box-shadow: inset 0 0 50px $black;
+		}
+	}
+
+	.slideshow-image {
+		max-height: 330px;
+		overflow: hidden;
+		display: flex;
+		margin: auto;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.carousel-control-next-icon,
+	.carousel-control-prev-icon {
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.carousel-indicators {
+		display: none;
+		background: $white;
+		top: 100%;
+		bottom: initial;
+		right: initial;
+		left: initial;
+		margin: -1.25rem 0 0;
+		padding: .75rem;
+		border: 0;
+		@include radius(1.5rem);
+		@include shadow();
+
+		@include media-breakpoint-up(sm) {
+			display: flex;
+		}
+
+		button {
+			background: $gray-300;
+			@include square(1rem, 1rem);
+			border: 0;			
+
+			&.active {
+				background: $gray-500;
+			}
+		}
+	}
+}
