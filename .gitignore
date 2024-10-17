@@ -1,4 +1,5 @@
 _layout/
 node_modules/
+dist/
 *.local
 .env

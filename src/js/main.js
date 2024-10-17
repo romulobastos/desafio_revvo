@@ -1,2 +1,1 @@
-// bootstrap scripts
-import 'bootstrap';
+// custom scripts
