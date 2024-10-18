@@ -5,6 +5,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const concat = require('gulp-concat');
+const php = require('gulp-connect-php');
 const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 
@@ -42,25 +43,30 @@ gulp.task('images', async function () {
 	.pipe(gulp.dest('dist/img'));
 });
 
-// server and watch
-gulp.task('serve', function () {
-	browserSync.init({
-		server: {
-			baseDir: 'dist'
-		}
-	});
-	
-	gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
-	gulp.watch('src/js/**/*.js', gulp.series('js'));
-	gulp.watch('src/img/**/*', gulp.series('images'));
-	gulp.watch('src/**/*.html', gulp.series('html')).on('change', browserSync.reload);
-});
-
-// html to dist
+// move .html and .php to 'dist'
 gulp.task('html', function () {
-	return gulp.src('src/**/*.html')
+	return gulp.src(['src/**/*.html', 'src/**/*.php'])
 	.pipe(gulp.dest('dist'));
 });
 
+// server and watch
+gulp.task('serve', function () {
+	php.server({
+		base: './dist',
+		port: 3000,
+		keepalive: true,
+	});
+	browserSync.init({
+		proxy: "localhost:3000",
+		baseDir: "",
+		notify: false,
+	});
+	
+	gulp.watch('src/img/**/*', gulp.series('images'));
+	gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
+	gulp.watch('src/js/**/*.js', gulp.series('js'));
+	gulp.watch(['src/**/*.html', 'src/**/*.php'], gulp.series('html')).on('change', browserSync.reload);
+});
+
 // default task
-gulp.task('default', gulp.parallel('html', 'scss', 'js', 'images', 'serve'));
+gulp.task('default', gulp.parallel('images', 'scss', 'js', 'html', 'serve'));
