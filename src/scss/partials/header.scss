@@ -3,6 +3,25 @@ header {
 	background-color: $white;
 	padding-top: $spacer;
 
+	.header-wrapper {
+		flex-direction: column;
+		gap: 0.5rem;
+
+		@include media-breakpoint-up(lg) {
+			flex-direction: row;
+		}
+	}
+
+	.control-wrapper {
+		flex-direction: column;
+		gap: 0.5rem;
+
+		@include media-breakpoint-up(xs) {
+			flex-direction: row;
+			gap: 1rem;
+		}
+	}
+
 	.logo {
 		img {
 			filter:brightness(0);
@@ -27,10 +46,12 @@ header {
 			padding-left: 12px;
 			font-size: 0.75rem;
 			outline: none;
-			min-width: 150px;
-			width: 250px;
-			max-width: 100%;
+			width: 140px;
 			height: 45px;
+			
+			@include media-breakpoint-up(lg) {
+				width: 250px;
+			}
 		}
 
 		.search-icon {
@@ -43,11 +64,18 @@ header {
 		background-color: $gray-100;
 		width: 1px;
 		height: 80px;
-		margin: 0 20px;
+		margin: 0rem;
+		@include media-breakpoint-up(md) {
+			margin: 0 20px;
+		}		
 	}
 
 	.profile {
-		gap: 20px;
+		gap: 0.5rem;
+		
+		@include media-breakpoint-up(md) {
+			gap: 20px;
+		}
 
 		&::after {
 			font-size: 1.6rem;

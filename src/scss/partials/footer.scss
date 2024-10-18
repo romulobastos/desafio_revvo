@@ -1,4 +1,52 @@
 // footer section
-// footer {
-// 
-// }
+.footer {
+  background: $white;
+  margin-top: 3rem;
+  padding: 2rem 0;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-size: 0.875rem;
+  }
+
+  .logo {
+		img {
+			filter:brightness(.5) grayscale(1) opacity(0.8);
+			width: 184px;
+			height: auto;
+		}
+	}
+
+  p {
+    font-size: 0.875rem;
+    margin: 1rem 0 0;
+    
+    &.slogan {
+      font-size: 0.75rem;
+    }
+  }
+
+  .social {
+    .social-link {
+      background: $gray-300;
+      color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      @include radius(2rem);
+      transition: .2s linear all;
+
+      > i {
+        font-size: 1.5rem;
+      }
+
+      &:hover,
+      &:focus {
+        background: $black;
+      }
+    }
+  }
+}
