@@ -37,9 +37,17 @@ hr {
 	}
 }
 
+img {
+	image-rendering: auto;
+	backface-visibility: hidden;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 // sections
 @import "partials/header";
 @import "content/slideshow";
 @import "content/courses";
 @import "partials/footer";
 @import "partials/copyright";
+@import "content/modal";

@@ -1,0 +1,70 @@
+.modal {
+  background: rgba($black, 0.6);
+  .modal-dialog {
+    image-rendering: auto;
+    backface-visibility: hidden;
+    width: 96%;
+    max-width: 56rem;
+
+    .btn-close {
+      display: flex;
+      background: $white;
+      color: $red-200;
+      right: -0.5rem;
+      top: -1.5rem;
+      width: 3rem;
+      height: 3rem;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      @include radius(4rem);
+      @include shadow(0 0px 1rem 0 rgba($black, 0.5));
+
+      i {
+        font-size: 2.5rem;
+        display: flex;
+      }
+
+      @include media-breakpoint-up(lg) {
+        right: -1.6rem;
+        top: -1.6rem;
+        width: 3.75rem;
+        height: 3.75rem;
+        padding: 0;
+        
+        i {
+          font-size: 3rem;
+        }
+      }
+    }
+
+    .modal-body {
+      margin: 2.1rem;
+    }
+    
+    img[loading="lazy"] {
+      background: $gray-100;
+      @include radius(0.4rem 0.4rem 0 0);
+    }
+
+    .btn-cta {
+      background-color: $blue-200;
+      color: $white;
+      padding: 0.7rem 2rem;
+      margin: 0.1rem;
+      letter-spacing: -1px;
+      &:hover, &:focus {
+        background-color: darken($blue-200, 10%);
+      }
+
+      @include media-breakpoint-up(sm) {
+        padding: 0.7rem 7rem;
+      }
+    }
+
+    // .modal-content {
+      // background: $primary;
+    // } 
+  }
+}

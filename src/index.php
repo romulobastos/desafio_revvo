@@ -20,12 +20,7 @@
 	<?php include "includes/courses.php" ?>
 	<?php include "includes/footer.php" ?>
 	<?php include "includes/copyright.php" ?>
-	
-	<!-- modal -->
-	<!-- image -->
-	<!-- title -->
-	<!-- text -->
-	<!-- button -->
+	<?php include "includes/modal.php" ?>
 	
 	<!-- scripts -->
 	<script src="js/main.js"></script>

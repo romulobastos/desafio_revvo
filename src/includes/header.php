@@ -26,7 +26,7 @@
 						<div class="dropdown-toggle profile d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
 							<!-- profile picture -->
 							<figure class="avatar">
-								<img class="rounded" src="img/user-example.webp" alt="Imagem de Perfil" width="47" height="47" loading="lazy" />
+								<img class="rounded object-fit-cover" src="img/user-example.webp" alt="Imagem de Perfil" width="47" height="47" loading="lazy" />
 								<!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
 							</figure>
 
