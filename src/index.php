@@ -112,13 +112,19 @@
 	</div>
 		
 	<!-- courses -->
-		<!-- title -->
-		<!-- cards -->
-		 	<!-- image -->
+	<div class="courses mt-5">
+		<div class="container">
 			<!-- title -->
-			<!-- decription -->
-			<!-- button -->
-		<!-- card add course -->
+			<h2 class="h4 text-uppercase">Meus cursos</h2>
+			<hr class="mt-0" />
+
+			<!-- cards -->
+			<div class="row justify-content-center align-items-stretch gy-4 pt-2">
+				<?php include "includes/courses.php" ?>
+			</div>
+		</div>
+	</div>
+		
 
 	<!-- footer -->
 		<!-- logo & slogan -->

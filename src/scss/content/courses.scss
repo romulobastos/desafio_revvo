@@ -1,0 +1,25 @@
+
+.courses {
+	.card {
+		min-width: 15rem;
+		width: auto;
+		color: $gray-500;
+		@include radius(3px);
+		overflow: hidden;
+
+		.card-img-top {
+			@include radius(0px);
+		}
+
+		.card-title {
+			text-transform: uppercase;
+		}
+		.card-text {
+			font-size: 0.875rem;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+	}
+}

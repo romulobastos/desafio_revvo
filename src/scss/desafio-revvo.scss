@@ -1,6 +1,6 @@
 // aux classes
 .rounded {
-	@include radius(100px);
+	@include radius(100);
 }
 
 // body
@@ -9,7 +9,36 @@ body {
 	color: $gray-500;
 }
 
+// heading
+h1, h2, h3, h4, h5, h6, strong {
+	font-weight: $font-weight-bold;
+}
+
+.h1 { font-size: $h1-font-size; }
+.h2 { font-size: $h2-font-size; }
+.h3 { font-size: $h3-font-size; }
+.h4 { font-size: $h4-font-size; }
+.h5 { font-size: $h5-font-size; }
+.h6 { font-size: $h6-font-size; }
+
+hr {
+	border-color: $gray-300;
+}
+
+.btn-green {
+	background-color: $green-500;
+	border-color: $green-500;
+	color: $white;
+	
+	&:hover {
+		background-color: darken($green-500, 10%);
+		border-color: darken($green-500, 10%);
+		color: $white;
+	}
+}
+
 // sections
 @import "partials/header";
-@import "home/slideshow";
+@import "content/slideshow";
+@import "content/courses";
 @import "partials/footer";
