@@ -51,15 +51,8 @@ gulp.task('html', function () {
 
 // server and watch
 gulp.task('serve', function () {
-	php.server({
-		base: './dist',
-		port: 3000,
-		keepalive: true,
-	});
 	browserSync.init({
-		proxy: "localhost:3000",
-		baseDir: "",
-		notify: false,
+		proxy: "http://localhost:8080",
 	});
 	
 	gulp.watch('src/img/**/*', gulp.series('images'));
