@@ -45,6 +45,6 @@ Mantenha o docker rodando e abra uma nova aba/janela do terminal neste mesmo dir
 Execute o comando de importação SQL:
   ```bash
   # crie a tabela de cursos na base desafio_revvo
-  mysql -h 127.0.0.1 -P 3306 -u root -p desafio_revvo < sql/database.sql
+  mysql -h 127.0.0.1 -P 3306 -u admin -p desafio_revvo < sql/database.sql
   ```
 Para visualizar e gerenciar o banco de dados MySQL, utilize o phpMyAdmin em **http://localhost:8081**.
