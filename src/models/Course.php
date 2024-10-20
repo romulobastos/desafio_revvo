@@ -20,4 +20,20 @@ class Course {
 		$st->execute();
 		return $st;
 	}
+
+	// courses (create)
+	public function create() {
+		$query = "INSERT INTO " . $this->table_name . " (title, info, img_url, slug) VALUES (:title, :info, :img_url, :slug)";
+		$st = $this->conn->prepare($query);
+		$st->bindParam(':title', $this->title);
+		$st->bindParam(':info', $this->info);
+		$st->bindParam(':img_url', $this->img_url);
+		$st->bindParam(':slug', $this->slug);
+		
+		$created = $st->execute();
+		if ($created) {
+			return true;
+		}
+		return false;
+	}
 }
