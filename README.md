@@ -41,6 +41,8 @@ Obs.: Caso a janela não abra automaticamente, acesse **http://localhost:3000/**
 ##
 
 ### Administração do Banco de Dados
+Mantenha o docker rodando e abra uma nova aba/janela do terminal neste mesmo diretório.
+Execute o comando de importação SQL:
   ```bash
   # crie a tabela de cursos na base desafio_revvo
   mysql -h 127.0.0.1 -P 3306 -u root -p desafio_revvo < sql/database.sql
