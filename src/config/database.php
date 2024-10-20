@@ -7,11 +7,10 @@ class Database {
 	public $conn;
 
 	public function __construct() {
-        $this->host = 'localhost';
+        $this->host = 'db';
         $this->dbname = getenv('MYSQL_DATABASE') ?: 'desafio_revvo';
         $this->username = getenv('MYSQL_USER') ?: 'admin';
         $this->password = getenv('MYSQL_PASSWORD') ?: '1234';
-        $this->getConnection();
     }
 	
 	public function getConnection() {
