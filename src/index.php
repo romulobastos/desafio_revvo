@@ -15,18 +15,8 @@ if ($action == 'new') {
 	$title = $_POST['title'];
   $info = $_POST['info'];
   $slug = $_POST['slug'];
-	// file upload - 'img'
-	$imgData = file_get_contents($_FILES['img']['tmp_name']);
-	$imgType = $_FILES['img']['type'];
-	if (substr($imgType, 0, 5) == 'image') {
-		if ($title && $info && $imgData && $slug) {
-			echo $controller->create($title, $info, $imgData, $slug);
-		} else {
-			echo "Dados inválidos. Por favor, preencha todos os campos.";
-		}		
-	} else {
-		echo "Por favor, envie um arquivo de imagem válido.";
-	}
+	$img = $_FILES['img'];
+	echo $controller->create($title, $info, $img, $slug);
 
 } elseif ($action == 'find' && $getId){
 	// find a course by id
@@ -45,7 +35,6 @@ if ($action == 'new') {
 	
 	// file upload - 'img'
 	if (!empty($_FILES['img']['tmp_name'])) {
-		// echo 'FILE::::' . $_FILES['img']['tmp_name'];
 		$imgData = file_get_contents($_FILES['img']['tmp_name']);
 		$imgType = $_FILES['img']['type'];
 		if (substr($imgType, 0, 5) == 'image') {

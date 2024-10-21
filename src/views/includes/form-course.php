@@ -42,7 +42,7 @@
 						<?php if ($course['img']) { ?>
 							<img src="data:image/png;base64,<?= base64_encode($course['img']); ?>" width="120px" height="68px" loading="lazy" />
 						<?php } ?>						
-						<div id="courseImage" class="form-text">Formatos: jpg, jpeg e png.</div>
+						<div id="courseImage" class="form-text">Formatos: jpg, jpeg e png. Tamanho máximo: <?= $controller->uploadMaxFilesize; ?></div>
 					</div>
 
 					<!-- slug -->

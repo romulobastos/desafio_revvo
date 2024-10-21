@@ -5,12 +5,15 @@ include_once 'models/Course.php';
 class CourseController {
 	private $db;
 	private $course;
+	
+	public $uploadMaxFilesize;
 
 	public function __construct() {
 		session_start();
 		$database = new Database();
 		$this->db = $database->getConnection();
 		$this->course = new Course($this->db);
+		$this->uploadMaxFilesize = ini_get('upload_max_filesize');
 	}
 	
 	// read
@@ -25,6 +28,23 @@ class CourseController {
 		return $res->fetch(PDO::FETCH_ASSOC);
 	}
 
+	// convert file size to bytes
+	public function convertToBytes($size_str) {
+		switch (substr($size_str, -1)) {
+			case 'M':
+			case 'm':
+				return (int)$size_str * 1048576; // 1MB = 1048576 bytes
+			case 'K':
+			case 'k':
+				return (int)$size_str * 1024;    // 1KB = 1024 bytes
+			case 'G':
+			case 'g':
+				return (int)$size_str * 1073741824; // 1GB = 1073741824 bytes
+			default:
+				return (int)$size_str;
+		}
+	}
+
 	// create
 	public function create($title, $info, $img, $slug) {
 		$this->course->title = $title;
@@ -32,13 +52,6 @@ class CourseController {
 		$this->course->img = $img;
 		$this->course->slug = $slug;
 		if ($this->hasSlug($this->course->slug)) {
-			// previous data
-			$_SESSION['form_data'] = [
-				'title' => $title,
-				'info' => $info,
-				'img' => $img,
-				'slug' => $slug
-			];
 			$_SESSION['msg'] = [
 				'text' => "O campo Slug já existe!",
 				'class' => "danger",
@@ -48,19 +61,42 @@ class CourseController {
 			header('Location: /?action=new');
 			exit;
 		} else {
-			$created = $this->course->create();
-			if ($created) {
-				$_SESSION['msg'] = [
-					'text' => "Curso criado com sucesso!",
-					'class' => "success",
-					'icon' => "check-circle"
-				];
+			// file upload - 'img'
+			$fileimg = $this->course->img;
+			$imgSize = $fileimg['size'];
+			// img ok and 'size' exists
+			if (isset($fileimg) && $imgSize > 0) {
+				// img size is valid (default max limit: 2mb)
+				if ($imgSize <= $this->convertToBytes($this->uploadMaxFilesize)) {
+					$this->course->img = file_get_contents($fileimg['tmp_name']);
+					$imgType = $fileimg['type'];
+					if (substr($imgType, 0, 5) == 'image') {
+						if ($title && $info && $this->course->img && $slug) {
+							$created = $this->course->create();
+							if ($created) {
+								$_SESSION['msg'] = [
+									'text' => "Curso criado com sucesso!",
+									'class' => "success",
+									'icon' => "check-circle"
+								];
+							} else {
+								$_SESSION['msg'] = [
+									'text' => "Erro ao criar o curso!",
+									'class' => "danger",
+									'icon' => "x-circle"
+								];
+							}
+						} else {
+							echo "Dados inválidos. Por favor, preencha todos os campos.";
+						}		
+					} else {
+						echo "Por favor, envie um arquivo de imagem válido.";
+					}
+				} else {
+					echo "As imagens precisam estar em formato 'png' ou 'jpg'. Tamanho máximo: " . $this->uploadMaxFilesize;
+				}
 			} else {
-				$_SESSION['msg'] = [
-					'text' => "Erro ao criar o curso!",
-					'class' => "danger",
-					'icon' => "x-circle"
-				];
+				echo "As imagens precisam estar em formato 'png' ou 'jpg'. Tamanho máximo: " . $this->uploadMaxFilesize;
 			}
 			
 			header('Location: /?action=dashboard');
