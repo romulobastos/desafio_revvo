@@ -4,12 +4,13 @@
 		<hr>
 		<div class="row justify-content-center mt-5">
 			<div class="col-12">
-								
+				
 				<!-- session message -->
 				<?php if (isset($_SESSION['msg'])) { ?>
-				<div class="alert alert-<?= $_SESSION['msg']['class']; ?> d-flex align-items-center" role="alert">
+				<div class="alert alert-<?= $_SESSION['msg']['class']; ?> alert-dismissible d-flex align-items-center" role="alert">
 					<i class="bi bi-<?= $_SESSION['msg']['icon']; ?> me-2"></i>
-					<div><?= $_SESSION['msg']['text']; ?></div>
+					<?= $_SESSION['msg']['text']; ?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 				<?php } ?>
 				<!-- remove message after refresh -->
