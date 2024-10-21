@@ -81,4 +81,36 @@ class CourseController {
 		header('Location: /?action=dashboard');
 		exit;
 	}
+
+	// delete
+	public function delete($id) {
+		// check if exists
+		$course = $this->findCourse($id);
+
+		if ($course) {
+			$delete = $this->course->delete($id);
+			if ($delete) {
+				$_SESSION['msg'] = [
+					'text' => "Curso excluído com sucesso!",
+					'class' => "success",
+					'icon' => "check-circle"
+				];
+			} else {
+				$_SESSION['msg'] = [
+					'text' => "Erro ao excluir o curso!",
+					'class' => "danger",
+					'icon' => "x-circle"
+				];
+			}
+		} else {
+			$_SESSION['msg'] = [
+				'text' => "Curso não encontrado!",
+				'class' => "danger",
+				'icon' => "x-circle"
+			];
+		}
+
+		header('Location: /?action=dashboard');
+		exit;
+	}
 }

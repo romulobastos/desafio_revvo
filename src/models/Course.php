@@ -57,4 +57,13 @@ class Course {
 		$st->execute();
 		return $st;
 	}
+
+	// delete
+	public function delete($id) {
+		$query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+		$st = $this->conn->prepare($query);
+		$st->bindParam(':id', $id, PDO::PARAM_INT);
+		$st->execute();
+		return $st;
+	}
 }

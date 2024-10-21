@@ -50,6 +50,10 @@ if ($action == 'new') {
 	$courses = $controller->read();
 	include 'views/dashboard.php';
 
+} elseif ($action == 'delete' && $getId && $_SERVER['REQUEST_METHOD'] === 'GET') {
+	// remove an existing course
+	$controller->delete($getId);
+
 } else {
 	// page with courses (cards)
 	$courses = $controller->read();
