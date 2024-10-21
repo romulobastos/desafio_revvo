@@ -77,6 +77,15 @@ $coursesMock = [
 				</div>
 			<?php } ?>
 
+			<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+				<div class="card card-add-course bg-transparent h-100 justify-content-center align-items-center p-0 m-0">
+					<a href="/?action=new" class="d-flex flex-column w-100 h-100 justify-content-center align-items-center text-uppercase text-center gap-2">
+						<i class="bi bi-folder-plus"></i>
+						<span>Adicionar<span class="fw-bold br">Curso</span></span>
+					</a>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </div>
