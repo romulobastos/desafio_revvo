@@ -18,13 +18,29 @@ document.addEventListener("DOMContentLoaded", function() {
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
 	// delete confirmation
-	var deleteModal = document.getElementById('deleteCourseModal');
-  deleteModal.addEventListener('show.bs.modal', function (event) {
-    // pressed button and course id
-    var button = event.relatedTarget;
-    var courseId = button.getAttribute('data-id');
-    // confirm button and define id
-    var confirmDelete = document.getElementById('confirmDelete');
-    confirmDelete.href = "?action=delete&id=" + courseId;
-  });
+	if (document.getElementById('deleteCourseModal')) {
+		var deleteModal = document.getElementById('deleteCourseModal');
+		deleteModal.addEventListener('show.bs.modal', function (event) {
+			// pressed button and course id
+			var button = event.relatedTarget;
+			var courseId = button.getAttribute('data-id');
+			// confirm button and define id
+			var confirmDelete = document.getElementById('confirmDelete');
+			confirmDelete.href = "?action=delete&id=" + courseId;
+		});
+	}
+  
 });
+
+// generate slug
+function generateSlug() {
+	const title = document.getElementById('title').value;
+	let slug = title.toLowerCase();
+	// remove special chars
+	slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+	// remove alphanumerics (keep hifens)
+	slug = slug.replace(/[^\w\s-]/g, '');
+	// replace blank spaces and underscore
+	slug = slug.trim().replace(/\s+/g, '-').replace(/_+/g, '-');
+	document.getElementById('slug').value = slug;
+}
