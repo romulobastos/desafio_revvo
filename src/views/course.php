@@ -20,6 +20,11 @@
   <!-- details -->
 	<section class="course-details my-5">
 		<div class="container py-5">
+			<!-- back -->
+			<div class="row mb-4">
+				<a href="/" class="text-decoration-none text-secondary"><i class="bi bi-arrow-left me-2"></i>Voltar para lista de cursos</a>
+			</div>
+			
 			<div class="row flex-column flex-sm-row gap-3">
 				<!-- img -->
 				<div class="col">
