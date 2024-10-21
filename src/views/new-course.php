@@ -16,7 +16,7 @@
 <body>
 	
 	<?php include "includes/header.php" ?>
-	<?php include "includes/form-new-course.php" ?>
+	<?php include "includes/form-course.php" ?>
 	<?php include "includes/footer.php" ?>
 	<?php include "includes/copyright.php" ?>
 	

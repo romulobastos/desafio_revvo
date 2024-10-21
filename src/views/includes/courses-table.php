@@ -35,12 +35,18 @@
 								<td><?= $course['info']; ?></td>
 								<td>
 									<div class="d-flex gap-2 justify-content-center">
-										<a href="/?action=find&id=<?=$course['id']?>" class="btn btn-sm btn-outline-primary rounded-pill px-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Curso">
-											<i class="bi bi-pen"></i>
-										</a>
-										<a href="/?action=delete&id=<?=$course['id']?>" class="btn btn-sm btn-outline-secondary rounded-pill px-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remover Curso">
-											<i class="bi bi-x-lg"></i>
-										</a>
+										<!-- edit course -->
+										<div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Curso">
+											<a href="/?action=find&id=<?=$course['id']?>" class="btn btn-sm btn-outline-primary rounded-pill px-2">
+												<i class="bi bi-pen"></i>
+											</a>
+										</div>
+										<!-- remove course -->
+										<div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remover Curso">
+											<button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-2" data-bs-toggle="modal" data-bs-target="#deleteCourseModal" data-id="<?=$course['id']; ?>">
+												<i class="bi bi-x-lg"></i>
+											</button>
+										</div>
 									</div>
 								</td>
 							</tr>
@@ -58,3 +64,22 @@
 		</div>
 	</div>
 </section>
+
+<!-- modal - remove confirmation -->
+<div class="modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="deleteCourseModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="deleteCourseModalLabel">Confirmar Exclusão</h5>
+				<button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+			</div>
+			<div class="modal-body">
+				Tem certeza de que deseja excluir este curso?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				<a href="#" class="btn btn-danger" id="confirmDelete">Excluir</a>
+			</div>
+		</div>
+	</div>
+</div>

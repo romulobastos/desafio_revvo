@@ -3,8 +3,10 @@
   .modal-dialog {
     image-rendering: auto;
     backface-visibility: hidden;
-    width: 96%;
-    max-width: 56rem;
+    &.modal-lg {
+      width: 96%;
+      max-width: 56rem;
+    }
 
     .btn-close {
       display: flex;
