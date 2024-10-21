@@ -21,6 +21,15 @@ class Course {
 		return $st;
 	}
 
+	// check slug
+	public function hasSlug($slug) {
+		$query = "SELECT * FROM " . $this->table_name . " WHERE slug = :slug";
+		$st = $this->conn->prepare($query);
+		$st->bindParam(':slug', $slug, PDO::PARAM_STR);
+		$duplicated = $st->execute();
+		return $st;
+	}
+
 	// create
 	public function create() {
 		$query = "INSERT INTO " . $this->table_name . " (title, info, img, slug) VALUES (:title, :info, :img, :slug)";

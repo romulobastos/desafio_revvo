@@ -6,6 +6,18 @@
 	<div class="container">
 		<h2><?= $pageTitle; ?></h2>
 		<hr>
+
+		<!-- session message -->
+		<?php if (isset($_SESSION['msg'])) { ?>
+			<div class="alert alert-<?= $_SESSION['msg']['class']; ?> alert-dismissible d-flex align-items-center" role="alert">
+				<i class="bi bi-<?= $_SESSION['msg']['icon']; ?> me-2"></i>
+				<?= $_SESSION['msg']['text']; ?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		<?php } ?>
+		<!-- remove message after refresh -->
+		<?php unset($_SESSION['msg']); ?>
+
 		<div class="row justify-content-center mt-5">
 			<div class="col-12 col-md-8 col-lg-6 my-3 my-lg-5">
 				<form method="POST" action="/?action=<?= $formAction; ?>" enctype="multipart/form-data">
@@ -30,12 +42,12 @@
 						<?php if ($course['img']) { ?>
 							<img src="data:image/png;base64,<?= base64_encode($course['img']); ?>" width="120px" height="68px" loading="lazy" />
 						<?php } ?>						
-						<div id="courseImage" class="form-text">Formatos: jpg, jpeg e png. Limite: 1MB.</div>
+						<div id="courseImage" class="form-text">Formatos: jpg, jpeg e png.</div>
 					</div>
 
 					<!-- slug -->
 					<div class="mb-3">
-						<label for="slug" class="form-label fw-bold">Slug</label>
+						<label for="slug" class="form-label fw-bold">Slug <?= $course['slug'] ;?></label>
 						<input type="text" name="slug" required class="form-control" id="slug" aria-describedby="courseSlug" value="<?= $course['slug'] ;?>">
 						<div id="courseSlug" class="form-text">Caminho de URL criado automaticamente.</div>
 					</div>

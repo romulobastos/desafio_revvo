@@ -18,30 +18,54 @@ class CourseController {
 		$res = $this->course->read();
 		return $res->fetchAll(PDO::FETCH_ASSOC);
 	}
-	
+
+	// check slug
+	public function hasSlug($slug) {
+		$res = $this->course->hasSlug($slug);
+		return $res->fetch(PDO::FETCH_ASSOC);
+	}
+
 	// create
 	public function create($title, $info, $img, $slug) {
 		$this->course->title = $title;
 		$this->course->info = $info;
 		$this->course->img = $img;
 		$this->course->slug = $slug;
-		$created = $this->course->create();
-		if ($created) {
-			$_SESSION['msg'] = [
-				'text' => "Curso criado com sucesso!",
-				'class' => "success",
-				'icon' => "check-circle"
+		if ($this->hasSlug($this->course->slug)) {
+			// previous data
+			$_SESSION['form_data'] = [
+				'title' => $title,
+				'info' => $info,
+				'img' => $img,
+				'slug' => $slug
 			];
-		} else {
 			$_SESSION['msg'] = [
-				'text' => "Erro ao criar o curso!",
+				'text' => "O campo Slug já existe!",
 				'class' => "danger",
 				'icon' => "x-circle"
 			];
+			
+			header('Location: /?action=new');
+			exit;
+		} else {
+			$created = $this->course->create();
+			if ($created) {
+				$_SESSION['msg'] = [
+					'text' => "Curso criado com sucesso!",
+					'class' => "success",
+					'icon' => "check-circle"
+				];
+			} else {
+				$_SESSION['msg'] = [
+					'text' => "Erro ao criar o curso!",
+					'class' => "danger",
+					'icon' => "x-circle"
+				];
+			}
+			
+			header('Location: /?action=dashboard');
+			exit;
 		}
-
-		header('Location: /?action=dashboard');
-		exit;
 	}
 
 	// find course (before update and delete)
