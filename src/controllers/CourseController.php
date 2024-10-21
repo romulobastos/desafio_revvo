@@ -13,13 +13,13 @@ class CourseController {
 		$this->course = new Course($this->db);
 	}
 	
-	// courses (read)
+	// read
 	public function read() {
 		$res = $this->course->read();
 		return $res->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
-	// courses (create)
+	// create
 	public function create($title, $info, $img_url, $slug) {
 		$this->course->title = $title;
 		$this->course->info = $info;
@@ -27,9 +27,55 @@ class CourseController {
 		$this->course->slug = $slug;
 		$created = $this->course->create();
 		if ($created) {
-			$_SESSION['msg'] = "Curso criado com sucesso!";
+			$_SESSION['msg'] = [
+				'text' => "Curso criado com sucesso!",
+				'class' => "success",
+				'icon' => "check-circle"
+			];
 		} else {
-			$_SESSION['msg'] = "Erro ao criar o curso.";
+			$_SESSION['msg'] = [
+				'text' => "Erro ao criar o curso!",
+				'class' => "danger",
+				'icon' => "x-circle"
+			];
+		}
+
+		header('Location: /?action=dashboard');
+		exit;
+	}
+
+	// find course (before update and delete)
+	public function findCourse($id) {
+		$res = $this->course->findCourse($id);
+		return $res->fetch(PDO::FETCH_ASSOC);
+	}
+
+	// update
+	public function update($id, $title, $info, $img_url, $slug) {
+		// check if exists
+		$course = $this->findCourse($id);
+		
+		if ($course) {
+			$updated = $this->course->update($id, $title, $info, $img_url, $slug);
+			if ($updated) {
+				$_SESSION['msg'] = [
+					'text' => "Curso atualizado com sucesso!",
+					'class' => "success",
+					'icon' => "check-circle"
+				];
+			} else {
+				$_SESSION['msg'] = [
+					'text' => "Erro ao atualizar o curso!",
+					'class' => "danger",
+					'icon' => "x-circle"
+				];
+			}
+		} else {
+			$_SESSION['msg'] = [
+				'text' => "Curso não encontrado!",
+				'class' => "danger",
+				'icon' => "x-circle"
+			];
 		}
 
 		header('Location: /?action=dashboard');

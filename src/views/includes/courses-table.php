@@ -7,9 +7,9 @@
 								
 				<!-- session message -->
 				<?php if (isset($_SESSION['msg'])) { ?>
-				<div class="alert alert-success d-flex align-items-center" role="alert">
-					<i class="bi bi-check-circle me-2"></i>
-					<div><?= $_SESSION['msg']; ?></div>
+				<div class="alert alert-<?= $_SESSION['msg']['class']; ?> d-flex align-items-center" role="alert">
+					<i class="bi bi-<?= $_SESSION['msg']['icon']; ?> me-2"></i>
+					<div><?= $_SESSION['msg']['text']; ?></div>
 				</div>
 				<?php } ?>
 				<!-- remove message after refresh -->
@@ -34,12 +34,12 @@
 								<td><?= $course['info']; ?></td>
 								<td>
 									<div class="d-flex gap-2 justify-content-center">
-										<button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Curso">
+										<a href="/?action=find&id=<?=$course['id']?>" class="btn btn-sm btn-outline-primary rounded-pill px-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Curso">
 											<i class="bi bi-pen"></i>
-										</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remover Curso">
+										</a>
+										<a href="/?action=delete&id=<?=$course['id']?>" class="btn btn-sm btn-outline-secondary rounded-pill px-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remover Curso">
 											<i class="bi bi-x-lg"></i>
-										</button>
+										</a>
 									</div>
 								</td>
 							</tr>
