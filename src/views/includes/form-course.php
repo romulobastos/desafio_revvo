@@ -8,7 +8,7 @@
 		<hr>
 		<div class="row justify-content-center mt-5">
 			<div class="col-12 col-md-8 col-lg-6 my-3 my-lg-5">
-				<form method="POST" action="/?action=<?= $formAction; ?>">
+				<form method="POST" action="/?action=<?= $formAction; ?>" enctype="multipart/form-data">
 					<!-- title -->
 					<div class="mb-3">
 						<label for="title" class="form-label fw-bold">Título</label>
@@ -25,9 +25,12 @@
 
 					<!-- image -->
 					<div class="mb-3">
-						<label for="img_url" class="form-label fw-bold">Imagem (Capa)</label>
-						<input type="text" name="img_url" required class="form-control" id="img_url" aria-describedby="courseImage" value="<?= $course['img_url'] ;?>">
-						<div id="courseImage" class="form-text">Formatos: jpeg, png, bmp, webp. Limite: 1MB.</div>
+						<label for="img" class="form-label fw-bold">Imagem (Capa)</label>
+						<input class="form-control" type="file" id="img" name="img" required />
+						<?php if ($course['img']) { ?>
+							<img src="data:image/png;base64,<?= base64_encode($course['img']); ?>" width="120px" height="68px" loading="lazy" />
+						<?php } ?>						
+						<div id="courseImage" class="form-text">Formatos: jpg, jpeg e png. Limite: 1MB.</div>
 					</div>
 
 					<!-- slug -->

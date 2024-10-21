@@ -65,7 +65,7 @@ $coursesMock = [
 			<?php foreach($courses as $course){ ?>
 				<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
 					<div class="card h-100">
-						<img src="<?= $course['img_url']; ?>" class="card-img-top" alt="<?= $course['title']; ?>" width="300" height="169" loading="lazy" />
+						<img src="data:image/png;base64,<?= base64_encode($course['img']); ?>" class="card-img-top" alt="<?= $course['title']; ?>" width="300" height="169" loading="lazy" />
 						<div class="card-body d-flex flex-column justify-content-between gap-3">
 							<div>
 								<h3 class="card-title h6"><?= $course['title']; ?></h3>

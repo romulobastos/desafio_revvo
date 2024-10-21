@@ -30,7 +30,7 @@
 						<tbody>
 							<?php foreach($courses as $course){ ?>
 							<tr>
-								<td><img src="<?= $course['img_url']; ?>" class="rounded" alt="<?= $course['title']; ?>" width="60px" height="34px" loading="lazy" /></td>
+								<td><img src="data:image/png;base64,<?= base64_encode($course['img']); ?>" width="120px" height="68px" loading="lazy" /></td>
 								<td><?= $course['title']; ?></td>
 								<td><?= $course['info']; ?></td>
 								<td>

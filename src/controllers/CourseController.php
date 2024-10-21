@@ -20,10 +20,10 @@ class CourseController {
 	}
 	
 	// create
-	public function create($title, $info, $img_url, $slug) {
+	public function create($title, $info, $img, $slug) {
 		$this->course->title = $title;
 		$this->course->info = $info;
-		$this->course->img_url = $img_url;
+		$this->course->img = $img;
 		$this->course->slug = $slug;
 		$created = $this->course->create();
 		if ($created) {
@@ -51,12 +51,12 @@ class CourseController {
 	}
 
 	// update
-	public function update($id, $title, $info, $img_url, $slug) {
+	public function update($id, $title, $info, $img, $slug) {
 		// check if exists
 		$course = $this->findCourse($id);
 		
 		if ($course) {
-			$updated = $this->course->update($id, $title, $info, $img_url, $slug);
+			$updated = $this->course->update($id, $title, $info, $img, $slug);
 			if ($updated) {
 				$_SESSION['msg'] = [
 					'text' => "Curso atualizado com sucesso!",
