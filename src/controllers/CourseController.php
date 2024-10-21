@@ -50,6 +50,12 @@ class CourseController {
 		return $res->fetch(PDO::FETCH_ASSOC);
 	}
 
+	// search course by name/term
+	public function search($term) {
+		$res = $this->course->search($term);
+		return $res->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 	// update
 	public function update($id, $title, $info, $img, $slug) {
 		// check if exists

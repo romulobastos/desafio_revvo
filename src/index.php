@@ -64,6 +64,12 @@ if ($action == 'new') {
 	// remove an existing course
 	$controller->delete($getId);
 
+} elseif ($action == 'search') {
+	// search courses
+	$term = $_POST['search'];
+	$courses = $controller->search($term);
+	include 'views/search.php';
+
 } else {
 	// page with courses (cards)
 	$courses = $controller->read();

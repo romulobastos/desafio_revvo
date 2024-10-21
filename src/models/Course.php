@@ -46,6 +46,16 @@ class Course {
 		return $st;
 	}
 
+	// search course by term
+	public function search($term) {
+		$query = "SELECT * FROM " . $this->table_name . " WHERE title LIKE :term OR info LIKE :term";
+		$st = $this->conn->prepare($query);
+		$searchTerm = "%{$term}%";
+		$st->bindParam(':term', $searchTerm, PDO::PARAM_STR);
+		$st->execute();
+		return $st;
+	}
+
 	// update
 	public function update($id, $title, $info, $img, $slug) {
 		$query = "UPDATE " . $this->table_name . " SET title = :title, info = :info, img = :img, slug = :slug WHERE id = :id";

@@ -4,18 +4,20 @@
 			<div class="header-wrapper d-flex justify-content-between align-items-center">
 				<!-- logo -->
 				<div class="logo">
-					<img src="img/logo-revvo.webp" alt="Logo Revvo" width="184" height="38" loading="lazy" />
+					<a href="/">
+						<img src="img/logo-revvo.webp" alt="Logo Revvo" width="184" height="38" loading="lazy" />
+					</a>
 				</div>
 				
 				<!-- search & welcome -->
 				<div class="control-wrapper d-flex justify-content-end align-items-center">
 					<!-- search -->
 					<div class="search-wrapper">
-						<div class="search d-flex align-items-center">
-							<input type="search" class="search-input" placeholder="Pesquisar cursos..." />
+						<form class="search d-flex align-items-center" action="/?action=search" method="POST">
+							<input type="search" class="search-input" name="search" id="search" placeholder="Pesquisar cursos..." />
 							<!-- icon -->
-							<i class="search-icon bi bi-search"></i>
-						</div>
+							<button type="submit" class="btn p-0"><i class="search-icon bi bi-search"></i></button>
+						</form>
 					</div>
 
 					<!-- separator -->
