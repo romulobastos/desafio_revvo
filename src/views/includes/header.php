@@ -36,11 +36,18 @@
 							</div>
 						</div>
 						<ul class="dropdown-menu w-100 mt-3">
-							<li><a class="dropdown-item" href="#"><i class="bi bi-person-bounding-box"></i> Meu Perfil</a></li>
-							<li><a class="dropdown-item" href="#"><i class="bi bi-card-checklist"></i> Meus Cursos</a></li>
-							<li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard"></i> Certificados</a></li>
+							<li><h2 class="dropdown-header">Perfil</h2></li>
+							<!-- <li><a class="dropdown-item" href=""><i class="bi bi-person-bounding-box"></i> Meu Perfil</a></li> -->
+							<li><a class="dropdown-item" href="/"><i class="bi bi-card-checklist"></i> Meus Cursos</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configurações</a></li>
+							<li><h2 class="dropdown-header">Adminstração</h2></li>
+							<li><a class="dropdown-item" href="/?action=dashboard"><i class="bi bi-mortarboard"></i> Gerenciar Cursos</a></li>
+							<li><a class="dropdown-item" href="/?action=new"><i class="bi bi-node-plus"></i> Novo Curso</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><h2 class="dropdown-header">Banco de Dados</h2></li>
+							<li><a class="dropdown-item" href="http://localhost:8081" target="_blank"><i class="bi bi-database"></i> phpMyAdmin</i></a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="http://revvo.com.br" target="_blank"><i class="bi bi-escape"></i> Sair</a></li>
 						</ul>
 					</div>
 				</div>
