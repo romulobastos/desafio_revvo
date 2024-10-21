@@ -12,4 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		// save access in localstorage
 		localStorage.setItem("homeModal", "true");
 	}
+
+	// tooltip
+	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 });

@@ -5,8 +5,9 @@ include_once 'models/Course.php';
 class CourseController {
 	private $db;
 	private $course;
-	
+
 	public function __construct() {
+		session_start();
 		$database = new Database();
 		$this->db = $database->getConnection();
 		$this->course = new Course($this->db);
@@ -24,6 +25,14 @@ class CourseController {
 		$this->course->info = $info;
 		$this->course->img_url = $img_url;
 		$this->course->slug = $slug;
-		return $this->course->create() ? "Curso criado com sucesso!" : "Erro ao criar o curso.";
+		$created = $this->course->create();
+		if ($created) {
+			$_SESSION['msg'] = "Curso criado com sucesso!";
+		} else {
+			$_SESSION['msg'] = "Erro ao criar o curso.";
+		}
+
+		header('Location: /?action=dashboard');
+		exit;
 	}
 }

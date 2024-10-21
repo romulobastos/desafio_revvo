@@ -7,7 +7,7 @@
 				<form method="POST" action="index.php?action=create">
 					<!-- title -->
 					<div class="mb-3">
-						<label for="title" class="form-label fw-bold">Título do Curso</label>
+						<label for="title" class="form-label fw-bold">Título</label>
 						<input type="text" name="title" required class="form-control" id="title" aria-describedby="courseTitle">
 						<div id="courseTitle" class="form-text">Recomendamos títulos de cursos simples e objetivos.</div>
 					</div>
@@ -33,8 +33,13 @@
 						<div id="courseSlug" class="form-text">Caminho de URL criado automaticamente.</div>
 					</div>
 					
+					<hr class="my-4" />
+
 					<!-- create -->
-					<button type="submit" class="btn btn-green px-4 fw-bold rounded-pill text-uppercase">Criar curso</button>
+					<div class="d-flex gap-2 justify-content-end align-items-center">
+						<button type="submit" class="btn btn-green px-3 pe-4 fw-bold rounded-pill text-uppercase">Salvar</button>
+						<a href="/?action=dashboard" class="btn text-secondary btn-sm rounded-pill text-uppercase">Cancelar</a>
+					</div>
 				</form>
 			</div>
 		</div>

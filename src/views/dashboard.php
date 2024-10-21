@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Novo Curso / Desafio Revvo - Fullstack PHP</title>
+	<title>Gerenciar Cursos / Desafio Revvo - Fullstack PHP</title>
 	
 	<!-- styles -->
 	<link rel="stylesheet" href="css/main.css" />
@@ -16,7 +16,7 @@
 <body>
 	
 	<?php include "includes/header.php" ?>
-	<?php include "includes/form-new-course.php" ?>
+	<?php include "includes/courses-table.php" ?>
 	<?php include "includes/footer.php" ?>
 	<?php include "includes/copyright.php" ?>
 	
@@ -24,4 +24,3 @@
 	<script src="js/main.js"></script>
 </body>
 </html>
-

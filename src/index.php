@@ -12,6 +12,9 @@ if ($action == 'new') {
 	$img_url = $_POST['img_url'];
 	$slug = $_POST['slug'];
 	echo $controller->create($title, $info, $img_url, $slug);
+} elseif ($action == 'dashboard') {
+	$courses = $controller->read();
+	include 'views/dashboard.php';
 } else {
 	$courses = $controller->read();
 	include 'views/courses.php';
