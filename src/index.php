@@ -66,6 +66,12 @@ if ($action == 'new') {
 	$courses = $controller->search($term);
 	include 'views/search.php';
 
+} elseif ($action == 'details') {
+	// courses details
+	$slug = $_GET['name'];
+	$course = $controller->hasSlug($slug);
+	include 'views/course.php';
+
 } else {
 	// page with courses (cards)
 	$courses = $controller->read();

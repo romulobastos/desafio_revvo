@@ -26,7 +26,7 @@ class Course {
 		$query = "SELECT * FROM " . $this->table_name . " WHERE slug = :slug";
 		$st = $this->conn->prepare($query);
 		$st->bindParam(':slug', $slug, PDO::PARAM_STR);
-		$duplicated = $st->execute();
+		$st->execute();
 		return $st;
 	}
 

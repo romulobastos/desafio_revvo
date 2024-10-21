@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Desafio Revvo - Fullstack PHP</title>
+	<title>Curso X / Desafio Revvo - Fullstack PHP</title>
 	
 	<!-- styles -->
 	<link rel="stylesheet" href="css/main.css" />
@@ -18,7 +18,23 @@
 	<?php include "includes/header.php" ?>
 	
   <!-- details -->
-  
+	<section class="course-details my-5">
+		<div class="container py-5">
+			<div class="row flex-column flex-sm-row gap-3">
+				<!-- img -->
+				<div class="col">
+					<img class="img-fluid" src="data:image/png;base64,<?= base64_encode($course['img']); ?>" width="800px" height="450px" loading="lazy" />
+				</div>
+				
+				<!-- info -->
+				<div class="col">
+					<h2><?= $course['title']; ?></h2>
+					<hr>
+					<p><?= $course['info']; ?></p>
+				</div>
+			</div>
+		</div>
+	</section>
 	
   <?php include "includes/footer.php" ?>
 	<?php include "includes/copyright.php" ?>
