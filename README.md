@@ -19,6 +19,9 @@ Necessária instalação do Docker para criação do container e execução no t
 
 **Construa as imagens Docker** (apenas na primeira execução ou após mudanças significativas):
   ```bash
+  # instale as dependências
+  npm install
+
   # crie as imagens docker
   docker-compose up --build
   ```
@@ -34,17 +37,12 @@ Isso interromperá o processo em execução, como o servidor Docker, sem fechar 
 Inicie os serviços via Docker (Apache, PHP, MySQL e phpMyAdmin) e abra o projeto no navegador padrão:
   ```bash
   # inicie o container docker e execute tarefas gulp
-  docker-compose up -d && gulp
+  docker-compose up -d && npm run build
   ```
 Obs.: Caso a janela não abra automaticamente, acesse **http://localhost:3000/** no seu navegador.
 
 ##
 
 ### Administração do Banco de Dados
-Mantenha o docker rodando e abra uma nova aba/janela do terminal neste mesmo diretório.
-Execute o comando de importação SQL:
-  ```bash
-  # crie a tabela de cursos na base desafio_revvo
-  mysql -h 127.0.0.1 -P 3306 -u admin -p desafio_revvo < sql/database.sql
-  ```
 Para visualizar e gerenciar o banco de dados MySQL, utilize o phpMyAdmin em **http://localhost:8081**.
+Caso seja necessário criar a tabela de `courses` manualmente, o arquivo para importação fica em `/sql/database.sql`.
