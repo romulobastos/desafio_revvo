@@ -24,7 +24,7 @@
 					<!-- title -->
 					<div class="mb-3">
 						<label for="title" class="form-label fw-bold">Título</label>
-						<input type="text" name="title" required class="form-control" id="title" aria-describedby="courseTitle" value="<?= $course['title'] ;?>" onkeypress="generateSlug()">
+						<input type="text" name="title" required class="form-control" id="title" aria-describedby="courseTitle" value="<?= $course['title'] ;?>" onkeyup="generateSlug()">
 						<div id="courseTitle" class="form-text">Recomendamos títulos de cursos simples e objetivos.</div>
 					</div>
 					
