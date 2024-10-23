@@ -35,6 +35,12 @@
 								<td><?= $course['info']; ?></td>
 								<td>
 									<div class="d-flex gap-2 justify-content-center">
+										<!-- view course -->
+										<div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Visualizar Curso">
+											<a href="/?action=details&name=<?=$course['slug']?>" class="btn btn-sm btn-outline-secondary rounded-pill px-2">
+												<i class="bi bi-eye"></i>
+											</a>
+										</div>
 										<!-- edit course -->
 										<div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Curso">
 											<a href="/?action=find&id=<?=$course['id']?>" class="btn btn-sm btn-outline-primary rounded-pill px-2">
