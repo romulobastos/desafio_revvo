@@ -19,7 +19,7 @@
 								<h3 class="card-title h6"><?= $course['title']; ?></h3>
 								<p class="card-text"><?= $course['info']; ?></p>
 							</div>
-							<a href="<?= $course['slug']; ?>" class="btn btn-green rounded-pill">Ver curso</a>
+							<a href="?action=details&name=<?= $course['slug']; ?>" class="btn btn-green rounded-pill">Ver curso</a>
 						</div>
 					</div>
 				</div>
